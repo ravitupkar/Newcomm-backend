@@ -13,6 +13,17 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/get', function(req, res, next) {
+  Products.find()
+  .then(result => {
+    res.json(result);
+  })
+  .catch(err => {
+    res.json(err);
+  });
+});
+
+
 router.post('/create', function(req, res, next) {
   // res.json(req.body);
   var product =   new Products({
@@ -38,6 +49,16 @@ router.post('/create', function(req, res, next) {
 });
 
 router.get('/edit/:id', function(req, res, next) {
+  Products.findOne({_id : req.params.id})
+  .then(result => {
+    res.json(result);
+  })
+  .catch(err => {
+    res.json(err);
+  });
+})
+
+router.get('/get/:id', function(req, res, next) {
   Products.findOne({_id : req.params.id})
   .then(result => {
     res.json(result);
