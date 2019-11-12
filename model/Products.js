@@ -13,7 +13,11 @@ var Products = new Schema({
     categories: { type: String},
     catalogs: { type: String},
     variants: { type: String},
-    modified: { type: Date, default: Date.now }
+    modified: { type: Date, default: Date.now },
+    review: {
+    type: Schema.Types.ObjectId,
+    ref: "Review"
+  }
 }, {
    collection: 'Products'
 });
