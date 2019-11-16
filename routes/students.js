@@ -42,7 +42,7 @@ router.post('/save-student', function(req, res, next) {
   
 });
 
-router.get('/edit/:id', function(req, res, next) {
+router.get('/student/:id', function(req, res, next) {
   Student.findOne({_id : req.params.id})
   .then(result => {
     res.json(result);
@@ -62,8 +62,8 @@ router.get('/get/:id', function(req, res, next) {
   });
 })
 
-router.post('/update', function(req, res, next) {
-  Student.findOneAndUpdate({_id : req.body._id}, {
+router.post('/update-student/:id', function(req, res, next) {
+  Student.findOneAndUpdate({_id : req.params.id}, {
     $set : req.body
   })
   .then(result => {
