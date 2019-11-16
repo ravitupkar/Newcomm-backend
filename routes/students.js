@@ -74,7 +74,7 @@ router.post('/update-student/:id', function(req, res, next) {
   });
 })
 
-router.get('/delete/:id', function(req, res, next) {
+router.delete('/delete-student/:id', function(req, res, next) {
   Student.findOne({_id : req.params.id})
   .then(result => {
     if(result.length > 0){
