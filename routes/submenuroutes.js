@@ -34,19 +34,19 @@ SubMenus.find({_id : req.params.id})
 });
 
 router.post('/create-submenus', function(req, res, next) {
-  res.json(req.body);
-//   var submenus =   new SubMenus({
-//     "menus_id": req.body.menus_id,
-//     "sub_menus": req.body.sub_menu
-//   });
+//   res.json(req.body);
+  var submenus =   new SubMenus({
+    "menus_id": req.body.menus_id,
+    "sub_menus": req.body.sub_menu
+  });
 
-//   submenus.save()
-//   .then(result => {
-//     res.json(result);
-//   })
-//   .catch(err => {
-//     res.json(err);
-//   });
+  submenus.save()
+  .then(result => {
+    res.json(result);
+  })
+  .catch(err => {
+    res.json(err);
+  });
   
 });
 
