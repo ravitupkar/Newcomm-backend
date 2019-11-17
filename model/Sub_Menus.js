@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Define collection and schema
 
 var Sub_Menus = new Schema({
-    menus: {
+    menus_id : {
         type: Schema.Types.ObjectId,
         ref: "Menus"
     },
