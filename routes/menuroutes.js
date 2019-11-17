@@ -3,7 +3,7 @@ var router = express.Router();
 var Menus = require('../model/Menus');
 
 /*  Munus listing. */
-router.get('/menus', function(req, res, next) {
+router.get('/', function(req, res, next) {
   Menus.find()
   .then(result => {
     res.json(result);
