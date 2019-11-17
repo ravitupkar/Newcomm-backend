@@ -1,10 +1,10 @@
 var express = require('express');
-var Products = require('../model/Products');
 var router = express.Router();
+var Products = require('../model/Products');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  Products.find()
+/*  Munus listing. */
+router.get('/products', function(req, res, next) {
+    Products.find()
   .then(result => {
     res.json(result);
   })
@@ -13,8 +13,8 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/get', function(req, res, next) {
-  Products.find()
+router.get('/product/:id', function(req, res, next) {
+    Products.findOne({_id : req.params.id})
   .then(result => {
     res.json(result);
   })
@@ -23,19 +23,34 @@ router.get('/get', function(req, res, next) {
   });
 });
 
+router.get('/product/get/:id', function(req, res, next) {
+    Products.find({_id : req.params.id})
+  .then(result => {
+    res.json(result);
+  })
+  .catch(err => {
+    res.json(err);
+  });
+});
 
-router.post('/create', function(req, res, next) {
+router.post('/create-product', function(req, res, next) {
   // res.json(req.body);
   var product =   new Products({
-    "title": req.body.title,
-    "price": req.body.price,
-    "availibility": req.body.availibility,
-    "description": req.body.description,
-    "style": req.body.style,
-    "images": req.body.images, 
-    "categories": req.body.categories,
-    "catalogs": req.body.catalogs, 
-    "variants": req.body.variants, 
+    "product_name": req.body.product_name,
+    "product_brand": req.body.product_brand,
+    "product_image" : req.body.product_image,
+    "product_images": req.body.product_image,
+    "product_s_price" : req.body.product_s_price,
+    "product_o_price": req.body.product_o_price,
+    "product_discount": req.body.product_discount,
+    "product_offer": req.body.product_offer,
+    "product_variant": req.body.product_variant,
+    "product_discription" : req.body.product_discription,
+    "product_vendor": req.body.product_vendor,
+    "product_munu_id": req.body.product_munu_id,
+    "product_submenu_id": req.body.product_submenu_id,
+    "product_categories_id": req.body.product_categories_id,
+    "product_sub_categories_id": req.body.product_sub_categories_id,
   });
 
   product.save()
@@ -48,28 +63,8 @@ router.post('/create', function(req, res, next) {
   
 });
 
-router.get('/edit/:id', function(req, res, next) {
-  Products.findOne({_id : req.params.id})
-  .then(result => {
-    res.json(result);
-  })
-  .catch(err => {
-    res.json(err);
-  });
-})
-
-router.get('/product/:id', function(req, res, next) {
-  Products.find({_id : req.params.id})
-  .then(result => {
-    res.json(result);
-  })
-  .catch(err => {
-    res.json(err);
-  });
-})
-
-router.post('/update', function(req, res, next) {
-  Products.findOneAndUpdate({_id : req.body._id}, {
+router.post('/update-product/:id', function(req, res, next) {
+    Products.findOneAndUpdate({_id : req.params.id}, {
     $set : req.body
   })
   .then(result => {
@@ -80,16 +75,17 @@ router.post('/update', function(req, res, next) {
   });
 })
 
-router.get('/delete/:id', function(req, res, next) {
- 
-      Products.findOneAndRemove({_id : req.params.id})
+router.delete('/delete-product/:id', function(req, res, next) {
+    Products.findOneAndRemove({_id : req.params.id})
           .then(result => {
             res.json(result);
           })
           .catch(err => {
             res.json(err);
           });
-    
+
 })
+
+/*  Munus listing. */
 
 module.exports = router;

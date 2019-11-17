@@ -10,6 +10,15 @@ var usersRouter = require('./routes/users');
 var studentsRouter = require('./routes/students');
 var productsRouter = require('./routes/products');
 
+var menusRouter = require('./routes/menuroutes');
+var submenusRouter = require('./routes/submenuroutes');
+var categoriesRouter = require('./routes/categoriesroutes');
+var subcategoriesRouter = require('./routes/subcategoriesroutes');
+
+
+
+
+
 var app = express();
 
 // Connecting with mongo db
@@ -43,6 +52,13 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', studentsRouter);
 app.use('/admin/products', productsRouter);
+
+app.use('/menus', menusRouter);
+app.use('/submenus', submenusRouter);
+app.use('/categories', categoriesRouter);
+app.use('/subcategories', subcategoriesRouter);
+app.use('/products', productsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
