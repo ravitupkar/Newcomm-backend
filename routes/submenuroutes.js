@@ -37,7 +37,7 @@ router.post('/create-submenus', function(req, res, next) {
 //   res.json(req.body);
   var submenus =   new SubMenus({
     "menus_id": req.body.menus_id,
-    "sub_menus": req.body.sub_menu
+    "sub_menus": req.body.sub_menus
   });
 
   submenus.save()
