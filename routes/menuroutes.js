@@ -3,7 +3,7 @@ var router = express.Router();
 var Menus = require('../model/Menus');
 
 /*  Munus listing. */
-router.get('/menus', function(req, res, next) {
+router.get('/', function(req, res, next) {
   Menus.find()
   .then(result => {
     res.json(result);
@@ -13,7 +13,7 @@ router.get('/menus', function(req, res, next) {
   });
 });
 
-router.get('/menus/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   Menus.findOne({_id : req.params.id})
   .then(result => {
     res.json(result);
@@ -23,7 +23,7 @@ router.get('/menus/:id', function(req, res, next) {
   });
 });
 
-router.get('/menus/get/:id', function(req, res, next) {
+router.get('/get/:id', function(req, res, next) {
   Menus.find({_id : req.params.id})
   .then(result => {
     res.json(result);
