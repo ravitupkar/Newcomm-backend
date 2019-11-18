@@ -51,7 +51,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', studentsRouter);
-app.use('/admin/products', productsRouter);
+app.use('/admin', productsRouter);
 
 app.use('/menus', menusRouter);
 app.use('/submenus', submenusRouter);
